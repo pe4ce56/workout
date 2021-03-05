@@ -178,7 +178,7 @@ const HomeScreen = ({navigation}) => {
       contentBackgroundColor={Colors.white}
       parallaxHeaderHeight={400}>
       <Block block padding={30} color={Colors.bg}>
-        <TodayTask />
+        {/* <TodayTask /> */}
 
         <TextView h6 style={{marginBottom: 10}}>
           Program Latihan

@@ -48,9 +48,9 @@ const ExercisingScreen = ({navigation, route}) => {
     workouts.beginer.find((w) => w.id === id).data[index],
   );
   const [repetitions, setRepetitions] = useState(null);
-  const [delay, setDelay] = useState(false);
+  const [delay, setDelay] = useState(true);
   const [start, setStart] = useState(false);
-
+  
   // set exercise next
   useEffect(() => {
     setWorkout(workouts.beginer.find((w) => w.id === id).data[index]);
@@ -113,6 +113,7 @@ const ExercisingScreen = ({navigation, route}) => {
     return (
       <CountDown
         until={7}
+        start={true}
         onFinish={starting}
         size={30}
         digitStyle={{backgroundColor: Colors.yellow}}
@@ -160,7 +161,7 @@ const ExercisingScreen = ({navigation, route}) => {
           padding={0}
           color={Colors.yellow}
           style={{
-            marginTop: 60,
+            marginTop: 30,
             borderRadius: 12,
             display: 'flex',
             alignSelf: 'center',
@@ -176,7 +177,7 @@ const ExercisingScreen = ({navigation, route}) => {
             elevation: 10,
           }}>
           <TextView color={Colors.bg} center h3>
-            {start ? 'Done' : 'Mulai'}
+            {start ? 'Selesai' : 'Mulai'}
           </TextView>
         </Button>
       </React.Fragment>
@@ -250,8 +251,7 @@ const ExercisingScreen = ({navigation, route}) => {
   }, [speaker]);
 
   return (
-    <Block block>
-      <ScrollView contentContainerStyle={{flex: 1}}>
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <ModalView />
         <Button
           style={{position: 'absolute', left: 70 - W / 10, top: 20}}
@@ -260,7 +260,7 @@ const ExercisingScreen = ({navigation, route}) => {
             <Icon name="arrow-left" size={30} style={{fontWeight: '300'}} />
           </Block>
         </Button>
-        <Button
+        {/* <Button
           onPress={toggleSpeaker}
           style={{position: 'absolute', right: 80 - W / 10, top: 40}}>
           {speaker ? (
@@ -268,7 +268,7 @@ const ExercisingScreen = ({navigation, route}) => {
           ) : (
             <Icon name="volume-x" size={30} style={{fontWeight: '300'}} />
           )}
-        </Button>
+        </Button> */}
 
         <Block
           padding={10}
@@ -276,7 +276,7 @@ const ExercisingScreen = ({navigation, route}) => {
             position: 'absolute',
             right: 0,
             left: 0,
-            top: 190 - H / 10,
+            top: 120 - H / 10,
             display: 'flex',
           }}>
           <TextView h4 center style={{marginBottom: 10}}>
@@ -299,12 +299,12 @@ const ExercisingScreen = ({navigation, route}) => {
             center>
             {workout.title}
           </TextView>
-          {delay ? <WaitingTime /> : <StartView />}
+          {delay? <WaitingTime /> : <StartView />}
+      
         </Block>
 
         {/* <TextView style={{ position: 'absolute', top: H / 6, alignSelf: 'center', fontSize: 200, color: '#000' }}>{countdown}</TextView> */}
       </ScrollView>
-    </Block>
   );
 };
 

@@ -31,8 +31,8 @@ const WorkoutsScreen = ({navigation, route}) => {
   const workout = workouts.beginer.find((w) => w.id === id);
 
   return (
-    <Block block color={Colors.white}>
-      <ScrollView style={{marginBottom: 70}}>
+    <Block block color={Colors.white} style={{position:"relative"}} >
+      <ScrollView style={{marginBottom:80}}>
         <Button onPress={() => navigation.goBack()}>
           <Block style={{padding: 10}}>
             <Icon name="arrow-left" size={30} style={{fontWeight: '300'}} />
@@ -55,9 +55,8 @@ const WorkoutsScreen = ({navigation, route}) => {
         </Block>
         <Block
           color={Colors.white}
-          style={{borderTopLeftRadius: 40, borderTopRightRadius: 40}}
-          padding={30}
-          height={H + 100}>
+          
+          padding={30}>
           <TextView h5 style={{marginBottom: 10}}>
             {workout.data.length} Exercise
           </TextView>
@@ -89,8 +88,8 @@ const WorkoutsScreen = ({navigation, route}) => {
                   }}
                   resizeMode={FastImage.resizeMode.contain}
                 />
-                <Block style={{marginLeft: 26}}>
-                  <TextView h6>{exercise.title}</TextView>
+                <Block style={{marginLeft: 26, flexGrow: 1,flex: 1,  }}>
+                  <TextView h6 >{exercise.title}</TextView>
                   <TextView
                     h6
                     color={Colors.secondary}
